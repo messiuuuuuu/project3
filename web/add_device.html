@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm thiết bị - Web tưới tiêu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body, html {
+            color: #333;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        footer a {
+            color: #4267B2;
+            margin: 0 10px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container mt-5">
+        <h3 class="text-center mb-4">Thêm thiết bị mới</h3>
+        <form id="add-device-form" class="text-center">
+            <div class="form-group">
+                <label for="device-key">Key thiết bị:</label>
+                <input type="text" class="form-control" id="device-key" placeholder="Nhập key thiết bị">
+            </div>
+            <div class="form-group">
+                <label for="device-name">Tên thiết bị:</label>
+                <input type="text" class="form-control" id="device-name" placeholder="Nhập tên thiết bị">
+            </div>
+            <button type="button" class="btn btn-primary" id="btn-add-device">Thêm thiết bị</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <!-- Other footer content -->
+        Theo dõi tôi.
+        <a href="https://www.facebook.com/profile.php?id=100016879906362" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://github.com/messiuuuuuu" target="_blank"><i class="fab fa-github"></i></a>
+    </footer>
+
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js"></script>
+    <script type="module">
+        import { addDevice } from './index.js';
+
+        document.getElementById('btn-add-device').addEventListener('click', () => {
+            const deviceKey = document.getElementById('device-key').value;
+            const deviceName = document.getElementById('device-name').value;
+            addDevice(deviceKey, deviceName);
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

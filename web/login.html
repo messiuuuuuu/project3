@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Đăng nhập</title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            
+            <!-- MATERIAL DESIGN ICONIC FONT -->
+        <link rel="stylesheet" href="design_files/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+                
+                <!-- STYLE CSS -->
+        <link rel="stylesheet" href="design_files/css/style.css">
+        <script type="module" src="index.js" defer></script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"></script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"></script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"></script>
+        <script type="module">
+            // Your Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyANJkWsIhBPVADfgwCsNNHod3G3rSDxeS4",
+                authDomain: "plant-watering-a9d08.firebaseapp.com",
+                databaseURL: "https://plant-watering-a9d08-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "plant-watering-a9d08",
+                storageBucket: "plant-watering-a9d08.firebasestorage.app",
+                messagingSenderId: "434068775182",
+                appId: "1:434068775182:web:6d374f36ef4efc10e4375f",
+                measurementId: "G-NP8N50QDPC"
+            };
+            // Initialize Firebase
+          </script>
+       
+    </head>
+
+    <body>
+        <div class="wrapper" style="background-image: url('design_files/images/loginback.jpg');">
+
+            <div class="inner">
+                <div class="image-holder">
+                    <img src="design_files/images/register-form.jpg" >
+                </div>
+
+                <form action="">
+                    <h3>ĐĂNG NHẬP</h3>
+                    <div class="form-wrapper">
+                        <input id="email" type="email" placeholder="Địa chỉ Email" class="form-control">
+                        <i class="zmdi zmdi-email"></i>
+                    </div>
+                    <div class="form-wrapper">
+                        <input id="password" type="password" placeholder="Mật khẩu" class="form-control">
+                        <i class="zmdi zmdi-lock"></i>
+                    </div>
+                    <div class="form-group container-login100-form-btn">
+                        <button class="btn-login" type="button" id="btn-login">
+                            Đăng nhập 
+                            <i class="zmdi zmdi-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="w-full text-center p-t-27 p-b-239" >
+                        <a href="forgetPassword.html" class="txt1">
+                            Quên mật khẩu?
+                        </a>
+                    </div>
+        
+                    <div class="w-full text-center" style="margin-top: 66%; font-size: 15px;">
+                        <a href="sign_up.html" class="text-dark">
+                            Chưa có tài khoản? Đăng ký
+                        </a>
+                    </div>
+                        
+                </form>
+            </div>
+            
+            
+        </div>
+        <script type="module" src="index.js" ></script>
+            <script type="module">
+                import { auth } from './index.js';
+
+                auth.onAuthStateChanged(function(user) {
+                    if (user) {
+                        window.location.href = "homepage.html";
+                    }
+                });
+            </script>
+    </body>
+</html>

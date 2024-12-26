@@ -1,0 +1,105 @@
+<!-- <!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page - User Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body, html {
+            color: #333;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .user-list {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Admin Page - User Management</h2>
+        <div class="user-list">
+            <h4>User Accounts</h4>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Email</th>
+                        <th>Display Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="user-table">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyANJkWsIhBPVADfgwCsNNHod3G3rSDxeS4",
+            authDomain: "plant-watering-a9d08.firebaseapp.com",
+            databaseURL: "https://plant-watering-a9d08-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "plant-watering-a9d08",
+            storageBucket: "plant-watering-a9d08.firebasestorage.app",
+            messagingSenderId: "434068775182",
+            appId: "1:434068775182:web:6d374f36ef4efc10e4375f",
+            measurementId: "G-NP8N50QDPC"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                fetchUserAccounts();
+            } else {
+                window.location.href = "login.html";
+            }
+        });
+
+        async function fetchUserAccounts() {
+            const userTable = document.getElementById('user-table');
+            userTable.innerHTML = '';
+
+            const response = await fetch('http://localhost:3000/listUsers');
+            const users = await response.json();
+            users.forEach(user => {
+                const userRow = document.createElement('tr');
+                userRow.innerHTML = `
+                    <td>${user.email}</td>
+                    <td>${user.displayName || ''}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteUserAccount('${user.uid}')">Delete</button>
+                    </td>
+                `;
+                userTable.appendChild(userRow);
+            });
+        }
+
+        window.deleteUserAccount = async function(uid) {
+            if (confirm("Are you sure you want to delete this user?")) {
+                await fetch(`http://localhost:3000/deleteUser/${uid}`, {
+                    method: 'DELETE'
+                });
+                alert("User deleted successfully.");
+                fetchUserAccounts();
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html> -->
